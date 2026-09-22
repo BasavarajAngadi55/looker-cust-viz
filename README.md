@@ -4,8 +4,8 @@ A custom visualization for Looker (Google Cloud core), built with the Looker
 Visualization API. `cust.js` renders a donut chart with a KPI total in the
 centre, using plain SVG with no external chart library.
 
-- **Visualization id:** `kpi_donut_chart`
-- **Label:** KPI Donut Chart
+- **Visualization id:** `custom_donut_v4`
+- **Label:** Custom Donut v4
 - **Requires:** 1 dimension and 1 measure
 - **Dependencies:** none
 
@@ -37,8 +37,8 @@ Adds the chart to every Explore. Requires Looker admin access.
 
 1. Go to **Admin** > **Platform** > **Visualizations**.
 2. Click **Add Visualization**.
-3. **ID:** `kpi_donut_chart` — must match the `id` inside `cust.js`.
-4. **Label:** `KPI Donut Chart`
+3. **ID:** `custom_donut_v4` — must match the `id` inside `cust.js`.
+4. **Label:** `Custom Donut v4`
 5. **Main:** `https://cdn.jsdelivr.net/gh/BasavarajAngadi55/looker-cust-viz@main/cust.js`
 6. Leave **Dependencies** and **SRI hash** empty. This chart has no dependencies.
 7. Click **Save** and reload any open Explore.
@@ -52,8 +52,8 @@ Adds the chart only to Explores in that project.
 
 ```lookml
 visualization: {
-  id: "kpi_donut_chart"
-  label: "KPI Donut Chart"
+  id: "custom_donut_v4"
+  label: "Custom Donut v4"
   url: "https://cdn.jsdelivr.net/gh/BasavarajAngadi55/looker-cust-viz@main/cust.js"
 }
 ```
@@ -76,8 +76,8 @@ cannot be created from that menu. It has to be dragged in.
 
 ```lookml
 visualization: {
-  id: "kpi_donut_chart"
-  label: "KPI Donut Chart"
+  id: "custom_donut_v4"
+  label: "Custom Donut v4"
   file: "cust.js"
 }
 ```
@@ -90,10 +90,22 @@ If you placed it in a folder, use the path from the project root, for example
 ## Using the chart
 
 1. Open an Explore and run a query with at least one dimension and one measure.
-2. Open the visualization type menu and select **KPI Donut Chart**.
-3. Click **Edit** to change the chart options:
-   - **Ring Thickness (px)** — width of the donut ring.
-   - **Center Label Text** — the caption above the centre total.
+2. Open the visualization type menu and select **Custom Donut v4**.
+3. Hover a slice to swap the centre text to that slice's name and value.
+4. Click **Edit** to change the chart options:
+
+| Section | Option | Purpose |
+| --- | --- | --- |
+| Style | Title | Heading shown above the chart |
+| Style | Header Font Size | Size of the heading, in px |
+| Style | Ring Thickness | Width of the donut ring, in px |
+| Legend | Show Legend | Toggles the legend on or off |
+| Legend | Legend Position | Right, Left, Top, or Bottom |
+| Formatting | Decimals | Decimal places in the compact numbers |
+| Formatting | Prefix | Currency symbol placed before values |
+
+The legend lists each slice with its name, its share as a percentage, and its
+formatted value. The centre shows the running total without the prefix.
 4. Save it as a Look or add it to a dashboard like any built-in chart.
 
 ## Troubleshooting
